@@ -1,0 +1,32 @@
+{% extends 'products/base.html' %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+          <a href="{% url 'showproduct' %}" class="btn btn-primary mt-2">Back</a>
+            <div class="card m-5 p-2" style="width: 25rem;">
+                <img src="{{ eachproduct.image.url }}"style="height: 300px; width: 200px;" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title m-1"><b>Name:</b> {{ eachproduct.name }}</h5>
+                    <h4 class="card-subtitle m-1"><b>Price:</b> RS.{{ eachproduct.price }}</h4>
+                    <p style="font-size: 14px;" class="btn btn-warning m-1 p-1">{{ eachproduct.category.name }}</p>
+                    <hr>
+                    <p style="font-size: 15px;" class="card-text mt-1">Description: {{ eachproduct.description }}</p>
+                    <p style="font-size: 13px;" class="cart-text mt-1">added - {{ eachproduct.created_at }}</p>
+                    <a href="{% url 'deleteproduct' eachproduct.id %}" class="btn btn-danger m-1"> Delete </a>
+                    <a href="{% url 'updateproduct' eachproduct.id %}" class="btn btn-primary m-1"> Update </a>
+                </div>
+            </div>
+        </div>
+  
+    </div>
+  
+  </div>
+  
+{% endblock content %}

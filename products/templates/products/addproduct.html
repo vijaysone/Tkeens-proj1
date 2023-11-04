@@ -1,0 +1,23 @@
+{% extends 'products/base.html' %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+
+<h3>addproduct</h3>
+
+<div class="container ">
+    <form class="form-check form-check-inline" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form.as_p}}
+        
+        </div>
+       
+
+        <input type="submit" value="add product">
+    </form>
+    
+</div>
+
+{% endblock content %}

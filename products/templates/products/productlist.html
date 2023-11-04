@@ -1,0 +1,70 @@
+{% extends 'products/base.html' %}
+
+{% block title %}showproduct{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+    
+        {% if products %}
+
+        <h4 class=" text-center alert alert-info">show product information</h4>
+        <table class="table table-hover">
+
+            <thead>
+              <tr>
+                <th scope="col">Product Image</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Category</th>
+                <th scope="col">Product Size</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Product description</th>
+                <th scope="col">Product created</th>
+               
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products  %}
+                <tr>
+                    
+                    <td>
+                        <img class="img-fluid"  style="height:50px; width:auto;"src="static/images/{{product.image}}">
+                    </td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.size}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.created_at}}</td>
+                    <td scope="col"> <a href="{% url 'productdetail' product.id %}" class="btn btn-primary">Detail</a>
+                </tr>
+            </tbody>
+                     
+            {% endfor %}
+            {% else %}
+                <p>No Products...</p>
+            {% endif %}
+        </table>
+            <div class="col-4">
+                <h2>Category</h2>
+                <br>
+                <hr>
+                    <a class="list-group-item" href="{% url 'showproduct' %}">All</a>
+  
+                        {% for category in categories %}
+  
+                        <li class="list-group-item">
+                          <a  href="{% url 'showproduct' %}?category={{ category.name }}">{{ category.name }}</a>
+                        </li>
+  
+                    {% endfor %}
+  
+            </div>
+
+    </div>
+</div>
+
+
+{% endblock content %}
